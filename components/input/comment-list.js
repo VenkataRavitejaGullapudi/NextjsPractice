@@ -2,8 +2,8 @@ import classes from './comment-list.module.css';
 
 function CommentList(props) {
   const { items } = props;
-
-  return (
+  console.log(items)
+  return (!items)?<h1>No comments</h1>: (
     <ul className={classes.comments}>
       {items.map((item) => (
         <li key={item._id}>

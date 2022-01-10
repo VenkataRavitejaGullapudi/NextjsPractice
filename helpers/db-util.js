@@ -1,9 +1,11 @@
 import { MongoClient } from 'mongodb';
 
 export async function connectDatabase() {
+  const dbName = "EventsAppDb"
   const client = await MongoClient.connect(
-    'mongodb+srv://maximilian:8ZO3ycZqJ23kWBQx@cluster0.ntrwp.mongodb.net/events?retryWrites=true&w=majority'
-  );
+    `mongodb://admin:raviadminofmongodb@cluster0-shard-00-00.jjgyu.mongodb.net:27017,cluster0-shard-00-01.jjgyu.mongodb.net:27017,cluster0-shard-00-02.jjgyu.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-r4qq28-shard-0&authSource=admin&retryWrites=true&w=majority`,
+    { useUnifiedTopology: true } 
+    );
 
   return client;
 }
